@@ -9,7 +9,7 @@ Sitio estático (HTML, CSS y JS, sin dependencias) listo para **GitHub Pages**.
 4. Tu sitio quedará en `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/`.
 
 ## Configurar la URL (importante para Google)
-Los archivos incluyen la URL de ejemplo `https://TU-USUARIO.github.io/TU-REPO/` en las etiquetas canonical, Open Graph, datos estructurados, `sitemap.xml` y `robots.txt`. Cámbiala por la real con:
+Los archivos ya traen tu URL (`https://itzga-artesanal.github.io/itzga-oficial/`) en las etiquetas canonical, Open Graph, datos estructurados, `sitemap.xml` y `robots.txt`. Si cambias de dominio o de repositorio, actualízala con:
 
     python configurar_url.py https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/
 
