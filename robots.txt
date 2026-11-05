@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://itzga-artesanal.github.io/itzga-oficial/sitemap.xml
