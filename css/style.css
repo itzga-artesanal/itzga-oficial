@@ -82,3 +82,21 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}img{max-width:100%;heig
 .btn.wab{background:#25D366;color:#fff;display:inline-flex;align-items:center;gap:8px;justify-content:center}.btn svg{flex:none}
 .soc{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}footer .soc{justify-content:center;margin:14px 0}.soc a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--ink);background:var(--card);transition:transform .2s,color .2s}.soc a:hover{color:var(--gold);transform:translateY(-2px)}
 .tel{color:var(--mut);font-size:14px}.cinfo h3{font-size:24px;margin-top:6px}
+
+
+/*fondo*/
+:root{--panel:rgba(255,255,255,.88);--navbg:rgba(251,243,238,.86);--ov:rgba(251,243,238,.14);--gl:rgba(184,134,75,.38);--mut:#6b5a52}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--panel:rgba(51,37,31,.92);--navbg:rgba(36,26,23,.9);--ov:rgba(36,26,23,.9);--gl:rgba(217,168,105,.35)}}
+:root[data-theme="dark"]{--panel:rgba(51,37,31,.92);--navbg:rgba(36,26,23,.9);--ov:rgba(36,26,23,.9);--gl:rgba(217,168,105,.35)}
+html{background:var(--bg)}body{background:transparent}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:url("../images/fondo-escritorio.jpg") center/cover no-repeat}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov);pointer-events:none}
+@media(max-aspect-ratio:1/1){body::before{background-image:url("../images/fondo-movil.jpg")}}
+nav{background:var(--navbg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--gl)}
+.card,.tile,.cinfo,.cform,.bot,.empty,.vals div,.soc a,.tabs button{background:var(--panel);border-color:var(--gl)}
+.tabs button.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+.story{background:var(--panel);border:1px solid var(--gl);border-radius:22px;padding:34px 28px;margin-top:26px}
+footer{background:var(--panel);border-top:1px solid var(--gl);margin-top:30px}
+.card img,.tile img{border-bottom:1px solid var(--gl)}
+section h2::after,.ph h1::after{content:"";display:block;width:80px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+@media(max-width:760px){.story{margin:26px 12px 0}}@media(max-width:480px){.story{padding:24px 18px}}
