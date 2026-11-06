@@ -25,3 +25,9 @@ Los archivos ya traen tu URL (`https://itzga-artesanal.github.io/itzga-oficial/`
 - `css/style.css`, `js/main.js`, `images/`.
 - SEO y PWA: `robots.txt`, `sitemap.xml`, `site.webmanifest`, favicons e imagen para redes (`images/og-itzga.jpg`).
 - Contacto: itzgaoficial@gmail.com
+
+## Idiomas
+- Español: raíz del sitio (`index.html`, `jabones-botanicos.html`, ...).
+- Inglés: carpeta `en/` (`en/index.html`, `en/botanical-soaps.html`, ...), con su propio `js/main.en.js`.
+- El botón **English / Español** del menú lleva a la misma página en el otro idioma. Las etiquetas `hreflang` y el `sitemap.xml` ya incluyen ambos idiomas para Google.
+- Si cambias un texto, hazlo en las dos versiones.
