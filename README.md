@@ -28,6 +28,6 @@ Los archivos ya traen tu URL (`https://itzga-artesanal.github.io/itzga-oficial/`
 
 ## Idiomas
 - Español: raíz del sitio (`index.html`, `jabones-botanicos.html`, ...).
-- Inglés: carpeta `en/` (`en/index.html`, `en/botanical-soaps.html`, ...), con su propio `js/main.en.js`.
+- Inglés: carpeta `en/` (`en/index.html`, `en/botanical-soaps.html`, ...), con los mismos `js/main.js` y `js/config.js`.
 - El botón **English / Español** del menú lleva a la misma página en el otro idioma. Las etiquetas `hreflang` y el `sitemap.xml` ya incluyen ambos idiomas para Google.
 - Si cambias un texto, hazlo en las dos versiones.
