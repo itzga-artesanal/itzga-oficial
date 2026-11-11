@@ -93,6 +93,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}img{max-width:100%;heig
 
 
 
+
+
 /*fondo*/
 :root{--panel:rgba(255,255,255,.88);--navbg:rgba(251,243,238,.86);--ov:rgba(251,243,238,.14);--gl:rgba(184,134,75,.38);--mut:#6b5a52}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--panel:rgba(51,37,31,.92);--navbg:rgba(36,26,23,.9);--ov:rgba(36,26,23,.9);--gl:rgba(217,168,105,.35)}}
