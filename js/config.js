@@ -36,6 +36,7 @@ window.ITZGA={
       "jabon-artesanal-nube":null,
       "jabon-artesanal-osito":null,
       "jabon-artesanal-ositos-recuerdo":65,
+      "jabon-artesanal-pino-navideno":65,
       "jabon-artesanal-racimo-uvas":null,
       "jabon-artesanal-rosa":50,
       "jabon-avena-miel":null,
