@@ -273,3 +273,8 @@ body{padding-bottom:78px}.toast{top:84px}
 .section-heading .script {
   font-size: 29px;
 }
+
+/* Selector de color — Racimo de Uvas (2026-11-16) */
+.variant{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--mut);margin:4px 0 10px}
+.variant select{flex:1;min-width:0;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.mt .variant{margin:0 0 12px}
