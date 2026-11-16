@@ -194,3 +194,67 @@ body{padding-bottom:78px}.toast{top:84px}
 .xmas-band .xmas-grid{position:relative;z-index:1;max-width:1150px;margin:28px auto}
 .xmas-band .card{color:var(--ink)}.xmas-band .btn.o{border-color:#ecd3a0;color:#fff;background:transparent}.xmas-band .btn.o:hover{background:#ecd3a0;color:#1b2e23}
 .xmas-note{max-width:640px;text-align:center}.xmas-note p{color:var(--mut)}
+
+/* ============================================================
+   ITZGA — Mejora de diseño y contraste
+   Cómo aplicarlo:
+   1) Abre css/style.css en el repositorio itzga-oficial
+   2) Pega TODO este bloque al final del archivo y guarda
+   3) Publica en GitHub Pages y revisa en celular y escritorio
+   No borra nada de lo que ya tienes: al ir al final, estas
+   reglas sobrescriben los valores anteriores.
+   ============================================================ */
+
+/* 1) Colores más oscuros, mismo estilo rosa / crema / dorado.
+      Contraste WCAG calculado sobre fondo crema #fbf3ee:
+      - Botones (blanco sobre dorado): de 4.7:1 a 7.3:1
+      - Texto pequeño gris-café: de 6.0:1 a 8.1:1
+      - Texto salvia: de 5.4:1 a 7.4:1 (6.7:1 sobre fondo salvia suave) */
+:root {
+  --gb: #7a4d12;        /* fondo de botones .btn, .tabs button.on, .skip, .fab */
+  --mut: #5a463e;       /* texto pequeño: .sub, .card p, .tile p, .faq p, footer */
+  --sage-text: #46543f; /* texto salvia: .tile-link, .hero-note, .eyebrow */
+  --sage: #46543f;
+}
+
+/* 2) Fondo más sólido detrás del texto.
+      Hoy el body usa una foto con un velo muy ligero (--ov .14)
+      y paneles semitransparentes (.88-.9), por eso el contraste
+      real cambia según la zona de la foto. Con esto el texto
+      queda sobre crema casi sólido, sin cambiar la paleta. */
+:root {
+  --ov: rgba(251, 243, 238, 0.55);
+  --panel: #ffffff;
+  --cream: #fffaf5;
+  --navbg: rgba(251, 243, 238, 0.96);
+}
+
+/* 3) Animación de aparición más rápida y menos desvanecida.
+      Hoy es: opacity 0, translateY(26px), 0.6s.
+      Con esto aparece en 0.35s y se mueve solo 12px, así las
+      tarjetas de producto, la historia y las preguntas ya no
+      se ven pálidas al cargar. */
+.js .rv {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(12px);
+}
+
+/* 4) Seguridad: si el observador tarda o falla, nada se queda
+      invisible más de 1 segundo. */
+.js .rv {
+  animation: itzga-reveal-fallback 0.01s linear 1s forwards;
+}
+@keyframes itzga-reveal-fallback {
+  to { opacity: 1; transform: none; }
+}
+
+/* 5) Respetar a quien prefiere menos movimiento (ya existía
+      en tu archivo, se deja explícito aquí). */
+@media (prefers-reduced-motion: reduce) {
+  .js .rv {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
