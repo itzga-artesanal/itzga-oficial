@@ -28,7 +28,7 @@ window.ITZGA={
       "jabon-clasico-":null,
       "jabon-artesanal-":null,
       "vela-artesanal-":null,
-      "vela-aromatica-":null,
+      "vela-aromatica-":85,
       "vela-comestible-":null
     },
     /* 3) PRECIO POR PRODUCTO (tiene prioridad sobre la familia). null = "Consultar precio" */
