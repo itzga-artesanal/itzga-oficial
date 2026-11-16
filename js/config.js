@@ -51,7 +51,7 @@ window.ITZGA={
       "jabon-artesanal-osito":null,
       "jabon-artesanal-ositos-recuerdo":65,
       "jabon-artesanal-pino-navideno":65,
-      "jabon-artesanal-racimo-uvas":null,
+      "jabon-artesanal-racimo-uvas":200,
       "jabon-artesanal-rosa":50,
       "jabon-avena-miel":null,
       "jabon-cafe-cacao":null,
