@@ -258,3 +258,18 @@ body{padding-bottom:78px}.toast{top:84px}
     animation: none !important;
   }
 }
+
+/* Ajuste cursiva dorada — 2026-11-16: oscurecer el dorado del texto
+   decorativo (.script) para que se lea sobre crema/mármol claro.
+   --gt pasa de #8a5a1e a #6b4210; la cursiva crece un poco.
+   En la banda navideña verde oscura se mantiene clara. */
+:root {
+  --gt: #6b4210;
+}
+.script {
+  color: var(--gt);
+  font-size: 32px;
+}
+.section-heading .script {
+  font-size: 29px;
+}
