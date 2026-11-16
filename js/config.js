@@ -2,6 +2,20 @@
 window.ITZGA={
   currency:"MXN",
 
+  /* ETIQUETAS en las tarjetas: "nuevo" y "navidad". Puedes poner una o dos por producto: "codigo":"nuevo"  o  "codigo":["navidad","nuevo"]. Quita la línea para no mostrar etiqueta. */
+  badges:{
+    "vela-artesanal-kit-navideno":["navidad","nuevo"],
+    "vela-artesanal-arbol-navidad":["navidad"],
+    "jabon-artesanal-pino-navideno":["navidad","nuevo"],
+    "jabon-artesanal-galleta":["navidad","nuevo"],
+    "jabon-artesanal-flor-encapsulada":"nuevo",
+    "jabon-artesanal-ositos-recuerdo":"nuevo",
+    "jabon-artesanal-racimo-uvas":"nuevo",
+    "jabon-artesanal-rosa":"nuevo",
+    "jabon-clasico-arroz":"nuevo",
+    "jabon-clasico-coco-almendra":"nuevo"
+  },
+
   /* 1) FORMULARIO DE CONTACTO REAL (opcional). Con Web3Forms (gratis): crea tu Access Key en web3forms.com con el correo itzgaoficial@gmail.com y pon:
      formEndpoint:"https://api.web3forms.com/submit",  formKey:"TU-ACCESS-KEY"
      Con Formspree: formEndpoint:"https://formspree.io/f/TU-ID" (y deja formKey vacío). Si lo dejas vacío, el formulario abre el correo del visitante. */
