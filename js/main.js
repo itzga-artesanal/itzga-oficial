@@ -24,9 +24,10 @@ function save(){try{localStorage.setItem("itzga_cart",JSON.stringify(cart))}catc
 function el(h){var t=d.createElement("div");t.innerHTML=h;return t.firstChild}
 var fab=el('<button class="fab" id="fab" aria-label="'+T.view+'">🛍<span id="cnt">0</span></button>'),
 dr=el('<aside class="drawer" id="drawer" aria-label="'+T.your+'"><div class="dh"><h3>'+T.your+'</h3><button class="x" data-close aria-label="'+T.close+'">×</button></div><div id="items"></div><div class="tot" id="tot"></div><div class="df"><a class="btn wab" id="sendwa" href="#" target="_blank" rel="noopener">'+T.sendwa+'</a><a class="btn o" id="send" href="#" target="_blank" rel="noopener">'+T.sendmail+'</a><button class="btn o" id="copy" type="button">'+T.copy+'</button><p class="note">'+T.note+'</p></div></aside>'),
-md=el('<div class="modal" id="modal"><div class="mb"><button class="x" data-close aria-label="'+T.close+'">×</button><img id="mi" alt=""><div class="mt"><span class="tag" id="mtag"></span><h3 id="mn"></h3><p id="md" style="margin:0;color:var(--mut)"></p><ul id="ml"></ul><p class="price" id="mp"></p><button class="btn" id="madd" type="button">'+T.add+'</button></div></div></div>'),
+md=el('<div class="modal" id="modal"><div class="mb"><button class="x" data-close aria-label="'+T.close+'">×</button><img id="mi" alt=""><div class="mt"><span class="tag" id="mtag"></span><h3 id="mn"></h3><p id="md" style="margin:0;color:var(--mut)"></p><ul id="ml"></ul><p class="price" id="mp"></p><label class="variant" id="mvar-wrap" hidden><span>Color:</span><select class="variant-select" id="mvar" aria-label="Color"></select></label><button class="btn" id="madd" type="button">'+T.add+'</button></div></div></div>'),
 ts=el('<div class="toast" id="toast"></div>');
 d.body.append(fab,dr,md,ts);
+var mv0=md.querySelector("#mvar");if(mv0)mv0.addEventListener("change",function(){$("madd").dataset.v=this.value});
 function toast(t){ts.textContent=t;ts.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){ts.classList.remove("show")},1800)}
 function calc(){var tot=0,np=0,any=false,rows=cart.map(function(c){var p=price(c.k);if(p==null)np++;else{tot+=p*c.q;any=true}return{c:c,p:p}});return{rows:rows,tot:tot,np:np,any:any}}
 function txt(){var o=calc();return T.hi+"\n\n"+o.rows.map(function(r){return "- "+r.c.q+" x "+r.c.n+(r.p!=null?" — "+fmt(r.p*r.c.q):"")}).join("\n")+(o.any?"\n\n"+(o.np?T.subp:T.sub)+": "+fmt(o.tot)+(o.np?" + "+o.np+T.quote:"")+"\n"+T.ship:"")+"\n\n"+T.thanks}
@@ -36,21 +37,21 @@ $("tot").innerHTML=o.any?'<div><span>'+(o.np?T.subp:T.sub)+'</span><b>'+fmt(o.to
 $("send").style.display=$("copy").style.display=$("sendwa").style.display=cart.length?"":"none";
 $("sendwa").href="https://wa.me/"+WA+"?text="+encodeURIComponent(txt());$("send").href="mailto:"+EM+"?subject="+encodeURIComponent(T.subj)+"&body="+encodeURIComponent(txt())}
 function copy(t,m){function fb(){var a=d.createElement("textarea");a.value=t;d.body.appendChild(a);a.select();try{d.execCommand("copy");toast(m)}catch(e){toast(T.cfail)}a.remove()}try{navigator.clipboard.writeText(t).then(function(){toast(m)},fb)}catch(e){fb()}}
-function add(n,k){var c=cart.filter(function(x){return x.n==n})[0];if(c){c.q++;if(!c.k)c.k=k}else cart.push({n:n,q:1,k:k});save();draw();toast(T.added+n);fab.classList.remove("bump");void fab.offsetWidth;fab.classList.add("bump");var mc=$("mcart");if(mc){mc.classList.remove("bump");void mc.offsetWidth;mc.classList.add("bump")}}
+function add(n,k,v){var nm=v?n+" \u2014 "+v:n;var c=cart.filter(function(x){return x.n==nm})[0];if(c){c.q++;if(!c.k)c.k=k}else cart.push({n:nm,q:1,k:k});save();draw();toast(T.added+nm);fab.classList.remove("bump");void fab.offsetWidth;fab.classList.add("bump");var mc=$("mcart");if(mc){mc.classList.remove("bump");void mc.offsetWidth;mc.classList.add("bump")}}
 function close(){dr.classList.remove("open");md.classList.remove("show")}
 /* precios en tarjetas */
 var BL=L=="en"?{nuevo:"New",navidad:"Christmas"}:{nuevo:"Nuevo",navidad:"Navidad"};d.querySelectorAll(".card").forEach(function(c){var b=c.querySelector(".add");if(!b||c.querySelector(".badges"))return;var bd=(CFG.badges||{})[b.dataset.k];if(!bd)return;bd=[].concat(bd);var w=d.createElement("div");w.className="badges";bd.slice(0,2).forEach(function(x){if(!BL[x])return;var s=d.createElement("span");s.className="badge b-"+x;s.textContent=BL[x];w.appendChild(s)});if(w.children.length)c.insertBefore(w,c.firstChild)});d.querySelectorAll(".card").forEach(function(c){var b=c.querySelector(".add");if(!b||c.querySelector(".price"))return;var p=price(b.dataset.k),e=d.createElement("p");e.className="price"+(p==null?" ask":"");e.textContent=p==null?T.ask:fmt(p);b.parentNode.insertBefore(e,b)});
 d.addEventListener("click",function(e){var t=e.target,a=t.closest(".add");
-if(a){add(a.dataset.n,a.dataset.k);return}
+if(a){var vs=a.closest(".card")?a.closest(".card").querySelector(".variant-select"):null;add(a.dataset.n,a.dataset.k,vs?vs.value:null);return}
 if(t.closest("[data-close]")||t===md){close();return}
 if(t.closest("#fab,#mcart")){draw();dr.classList.add("open");return}
-var ma=t.closest("#madd");if(ma){add(ma.dataset.n,ma.dataset.k);return}
+var ma=t.closest("#madd");if(ma){add(ma.dataset.n,ma.dataset.k,ma.dataset.v||null);return}
 var p=t.closest("[data-p]"),m=t.closest("[data-m]");
 if(p){cart[p.dataset.p].q++;save();draw();return}
 if(m){var i=m.dataset.m;if(--cart[i].q<1)cart.splice(i,1);save();draw();return}
 if(t.closest("#copy")){copy(txt(),T.copied);return}
 if(t.closest("#copymail,#copymail_en")){copy(EM,T.mcopied);return}
-var c=t.closest(".card");if(c&&c.querySelector(".add")){var u=c.querySelector("ul"),b=c.querySelector(".add"),pp=price(b.dataset.k);$("mi").src=c.querySelector("img").src;$("mn").textContent=c.querySelector("h3").textContent;$("mtag").textContent=c.querySelector(".tag").textContent;$("md").textContent=c.querySelector("p").textContent;$("ml").innerHTML=u?u.innerHTML:"";$("mp").textContent=pp==null?T.ask:fmt(pp);$("mp").className="price"+(pp==null?" ask":"");$("madd").dataset.n=b.dataset.n;$("madd").dataset.k=b.dataset.k||"";md.classList.add("show")}});
+var c=t.closest(".card");if(c&&c.querySelector(".add")){var u=c.querySelector("ul"),b=c.querySelector(".add"),pp=price(b.dataset.k);$("mi").src=c.querySelector("img").src;$("mn").textContent=c.querySelector("h3").textContent;$("mtag").textContent=c.querySelector(".tag").textContent;$("md").textContent=c.querySelector("p").textContent;$("ml").innerHTML=u?u.innerHTML:"";$("mp").textContent=pp==null?T.ask:fmt(pp);$("mp").className="price"+(pp==null?" ask":"");$("madd").dataset.n=b.dataset.n;$("madd").dataset.k=b.dataset.k||"";var vs=c.querySelector(".variant-select"),mw=$("mvar-wrap"),mv=$("mvar");if(vs&&mw&&mv){mw.hidden=false;mv.innerHTML=vs.innerHTML;mv.value=vs.value;$("madd").dataset.v=mv.value}else if(mw){mw.hidden=true;$("madd").dataset.v=""}md.classList.add("show")}});
 d.addEventListener("keydown",function(e){if(e.key=="Escape")close()});
 /* formulario de contacto */
 var f=C("cform");if(f){var sb=C("csend"),live=!!CFG.formEndpoint;if(live&&sb)sb.textContent=T.smsg;
