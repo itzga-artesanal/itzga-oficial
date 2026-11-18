@@ -1,7 +1,8 @@
 /* ITZGA · Chatbot "Itzi" — asistente sencillo sin servidor.
    Responde con los precios reales de js/config.js (window.ITZGA),
    explica cómo pedir por WhatsApp, envíos y velas comestibles.
-   No inventa costos de envío ni tiempos: esos se cotizan por WhatsApp. */
+   No inventa costos de envío ni tiempos: esos se cotizan por WhatsApp.
+   Avatar: velita tipo caricatura en SVG con flama animada. */
 (function () {
   'use strict';
 
@@ -49,6 +50,15 @@
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
+  /* Contiene alguna de estas raíces (sin acentos). Así "envíos", "precios"
+     o "pedir" también activan su respuesta, igual que los botones rápidos. */
+  function has(t, words) {
+    for (var i = 0; i < words.length; i++) {
+      if (t.indexOf(words[i]) !== -1) return true;
+    }
+    return false;
+  }
+
   /* ---------- Respuestas ---------- */
 
   function priceList() {
@@ -78,15 +88,6 @@
       text: 'El ' + p.name + ' es de precio a consultar.\nEscríbenos por WhatsApp y te confirmamos el precio y disponibilidad al momento.',
       wa: 'Hola ITZGA, ¿me pueden confirmar el precio del ' + p.name + '?'
     };
-  }
-
-  /* Contiene alguna de estas raíces (sin acentos). Así "envíos", "precios"
-     o "pedir" también activan su respuesta, igual que los botones rápidos. */
-  function has(t, words) {
-    for (var i = 0; i < words.length; i++) {
-      if (t.indexOf(words[i]) !== -1) return true;
-    }
-    return false;
   }
 
   function answer(raw) {
@@ -135,7 +136,7 @@
         if (t.indexOf(p2.keys[k2]) !== -1) return productAnswer(p2);
       }
     }
-    if (/\b(jabon|jabones|vela|velas)\b/.test(t)) {
+    if (has(t, ['jabon', 'vela'])) {
       return { text: 'Tenemos jabones artesanales, clásicos y botánicos, y velas artesanales, aromáticas y comestibles, todos hechos a mano en CDMX.\n¿Buscas un precio, hacer un pedido o saber de los envíos? También puedes preguntarme por un producto, por ejemplo: "¿cuánto cuesta el Racimo de Uvas?"' };
     }
     return { text: 'No estoy segura de eso, pero te ayudo con mucho gusto por WhatsApp: ahí te atiende directamente el taller.\nTambién puedes preguntarme por precios, pedidos, envíos o velas comestibles.', wa: 'Hola ITZGA, tengo una duda.' };
@@ -180,26 +181,42 @@
     botReply(v);
   }
 
+  /* Velita tipo caricatura: contornos gruesos, colores planos,
+     carita sonriente, rosas rosas y flama grande animada. */
+  var AVATAR_SVG =
+    '<svg viewBox="0 0 40 40" aria-hidden="true">' +
+    '<path class="itzi-flame" d="M20 1 C24.5 6.5 27 9 27 13 a7 7 0 1 1 -14 0 C13 9 15.5 6.5 20 1 Z" fill="#ffa726" stroke="#3a2a3a" stroke-width="1.4" stroke-linejoin="round"/>' +
+    '<path class="itzi-flame" d="M20 8 C22.5 11 23.5 12 23.5 14.5 a3.5 3.5 0 1 1 -7 0 C16.5 12 17.5 11 20 8 Z" fill="#ffdf5e"/>' +
+    '<rect x="19.3" y="18" width="1.4" height="2.6" rx=".7" fill="#3a2a3a"/>' +
+    '<rect x="8" y="20" width="24" height="17" rx="5" fill="#fff3d6" stroke="#3a2a3a" stroke-width="1.6"/>' +
+    '<path d="M8 22 Q20 26 32 22" fill="none" stroke="#3a2a3a" stroke-width="1.2" stroke-linecap="round"/>' +
+    '<circle cx="15" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="15.8" cy="27.7" r=".8" fill="#fff"/>' +
+    '<circle cx="25" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="25.8" cy="27.7" r=".8" fill="#fff"/>' +
+    '<circle cx="12.3" cy="31" r="1.4" fill="#f2a0a0"/><circle cx="27.7" cy="31" r="1.4" fill="#f2a0a0"/>' +
+    '<path d="M17.5 31.5 Q20 34 22.5 31.5" fill="none" stroke="#3a2a3a" stroke-width="1.3" stroke-linecap="round"/>' +
+    '<circle cx="10.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
+    '<circle cx="29.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
+    '</svg>';
+
   function build() {
     /* Botón flotante */
     var fab = el('button', null);
     fab.id = 'itzi-fab';
     fab.type = 'button';
     fab.setAttribute('aria-label', 'Abrir chat con Itzi, asistente de ITZGA');
-    fab.innerHTML = '<svg viewBox="0 0 40 40" aria-hidden="true">' +
-  '<path class="itzi-flame" d="M20 1 C24.5 6.5 27 9 27 13 a7 7 0 1 1 -14 0 C13 9 15.5 6.5 20 1 Z" fill="#ffa726" stroke="#3a2a3a" stroke-width="1.4" stroke-linejoin="round"/>' +
-  '<path class="itzi-flame" d="M20 8 C22.5 11 23.5 12 23.5 14.5 a3.5 3.5 0 1 1 -7 0 C16.5 12 17.5 11 20 8 Z" fill="#ffdf5e"/>' +
-  '<rect x="19.3" y="18" width="1.4" height="2.6" rx=".7" fill="#3a2a3a"/>' +
-  '<rect x="8" y="20" width="24" height="17" rx="5" fill="#fff3d6" stroke="#3a2a3a" stroke-width="1.6"/>' +
-  '<path d="M8 22 Q20 26 32 22" fill="none" stroke="#3a2a3a" stroke-width="1.2" stroke-linecap="round"/>' +
-  '<circle cx="15" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="15.8" cy="27.7" r=".8" fill="#fff"/>' +
-  '<circle cx="25" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="25.8" cy="27.7" r=".8" fill="#fff"/>' +
-  '<circle cx="12.3" cy="31" r="1.4" fill="#f2a0a0"/><circle cx="27.7" cy="31" r="1.4" fill="#f2a0a0"/>' +
-  '<path d="M17.5 31.5 Q20 34 22.5 31.5" fill="none" stroke="#3a2a3a" stroke-width="1.3" stroke-linecap="round"/>' +
-  '<circle cx="10.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
-  '<circle cx="29.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
-  '</svg>' +
-'</div>' +
+    fab.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.78 1.44 5.25 3.7 6.83L5 22l4.5-2.5c.8.18 1.63.28 2.5.28 5.52 0 10-3.94 10-8.8S17.52 2 12 2zm-2 8.5h-2v2h2v-2zm5 0h-2v2h2v-2z"/></svg>';
+    badge = el('span', 'itzi-fab-badge', '1');
+    fab.appendChild(badge);
+    document.body.appendChild(fab);
+
+    /* Panel */
+    panel = el('div', null);
+    panel.id = 'itzi-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'Chat con Itzi, asistente de ITZGA');
+    panel.innerHTML =
+      '<div class="itzi-head">' +
+        '<div class="itzi-avatar" role="img" aria-label="Itzi, asistente de ITZGA">' + AVATAR_SVG + '</div>' +
         '<div><div class="itzi-title">Itzi · Asistente ITZGA</div>' +
         '<div class="itzi-sub">En línea · Responde al instante</div></div>' +
         '<button class="itzi-close" type="button" aria-label="Cerrar chat">×</button>' +
