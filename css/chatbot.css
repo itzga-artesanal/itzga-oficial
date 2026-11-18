@@ -31,9 +31,29 @@
   display:flex; align-items:center; gap:10px;
 }
 .itzi-head .itzi-avatar{
-  width:36px; height:36px; border-radius:50%; flex:none;
-  background:#e9b949; color:#4a2f1d; font-weight:700;
-  display:flex; align-items:center; justify-content:center; font-size:18px;
+  width:40px; height:40px; border-radius:50%; flex:none; overflow:hidden;
+  background:#e9b949; border:2px solid #e9b949;
+}
+.itzi-head .itzi-avatar svg{
+  width:100%; height:100%; display:block;
+}
+.itzi-head .itzi-flame{
+  transform-origin:50% 100%;
+  animation:itzi-flicker .9s ease-in-out infinite alternate;
+}
+@keyframes itzi-flicker{
+  from{ transform:scaleY(1) skewX(-2deg); }
+  to{ transform:scaleY(1.12) skewX(2deg); }
+}
+.itzi-head .itzi-glow{
+  animation:itzi-glow 1.8s ease-in-out infinite alternate;
+}
+@keyframes itzi-glow{
+  from{ opacity:.35; }
+  to{ opacity:.65; }
+}
+@media (prefers-reduced-motion: reduce){
+  .itzi-head .itzi-flame, .itzi-head .itzi-glow{ animation:none; }
 }
 .itzi-head .itzi-title{ font-weight:700; font-size:15px; line-height:1.2; }
 .itzi-head .itzi-sub{ font-size:12px; opacity:.85; }
