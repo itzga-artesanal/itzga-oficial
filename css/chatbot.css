@@ -95,7 +95,17 @@
   background:#6b4210; color:#fffaf5; cursor:pointer; font-size:17px;
 }
 .itzi-send:hover{ background:#7a4d12; }
+@media (max-width:700px){
+  /* En celular el sitio muestra una barra inferior fija (.mbar) con el
+     carrito y el boton de WhatsApp: el boton de Itzi sube por encima de
+     esa barra para no tapar el WhatsApp. */
+  #itzi-fab{ right:14px; bottom:calc(80px + env(safe-area-inset-bottom,0px)); }
+  #itzi-panel{
+    right:12px; bottom:calc(152px + env(safe-area-inset-bottom,0px));
+    height:min(520px, calc(100vh - 190px));
+  }
+}
 @media (max-width:480px){
-  #itzi-fab{ right:14px; bottom:14px; }
-  #itzi-panel{ right:12px; bottom:84px; }
+  #itzi-fab{ right:14px; }
+  #itzi-panel{ right:12px; }
 }
