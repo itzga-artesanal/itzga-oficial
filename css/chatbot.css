@@ -1,0 +1,81 @@
+/* ITZGA · Chatbot Itzi — botón flotante y ventana de chat.
+   Paleta del sitio: crema, café oscuro y dorado. Sin dependencias. */
+#itzi-fab{
+  position:fixed; right:18px; bottom:18px; z-index:9999;
+  width:60px; height:60px; border-radius:50%; border:0; cursor:pointer;
+  background:#6b4210; color:#fffaf5;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 20px rgba(60,35,10,.35);
+  font-family:Montserrat,system-ui,sans-serif;
+}
+#itzi-fab:hover{ background:#7a4d12; }
+#itzi-fab svg{ width:28px; height:28px; }
+#itzi-fab .itzi-fab-badge{
+  position:absolute; top:-4px; right:-4px;
+  background:#c0392b; color:#fff; font-size:11px; font-weight:700;
+  min-width:20px; height:20px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; padding:0 5px;
+}
+#itzi-panel{
+  position:fixed; right:18px; bottom:90px; z-index:9999;
+  width:min(360px, calc(100vw - 36px));
+  height:min(520px, calc(100vh - 120px));
+  background:#fffaf5; border:1px solid #e8d9c8; border-radius:16px;
+  box-shadow:0 12px 40px rgba(60,35,10,.30);
+  display:none; flex-direction:column; overflow:hidden;
+  font-family:Montserrat,system-ui,sans-serif; color:#3a2a1e;
+}
+#itzi-panel.itzi-open{ display:flex; }
+.itzi-head{
+  background:#4a2f1d; color:#fffaf5; padding:12px 14px;
+  display:flex; align-items:center; gap:10px;
+}
+.itzi-head .itzi-avatar{
+  width:36px; height:36px; border-radius:50%; flex:none;
+  background:#e9b949; color:#4a2f1d; font-weight:700;
+  display:flex; align-items:center; justify-content:center; font-size:18px;
+}
+.itzi-head .itzi-title{ font-weight:700; font-size:15px; line-height:1.2; }
+.itzi-head .itzi-sub{ font-size:12px; opacity:.85; }
+.itzi-head .itzi-close{
+  margin-left:auto; background:transparent; border:0; color:#fffaf5;
+  font-size:20px; cursor:pointer; line-height:1; padding:4px 8px;
+}
+#itzi-msgs{
+  flex:1; overflow-y:auto; padding:14px; display:flex;
+  flex-direction:column; gap:10px; background:#fffaf5;
+}
+.itzi-msg{
+  max-width:85%; padding:10px 12px; border-radius:14px;
+  font-size:14px; line-height:1.45; white-space:pre-line; word-wrap:break-word;
+}
+.itzi-msg a{ color:#6b4210; font-weight:600; }
+.itzi-bot{ background:#f3e7d7; color:#3a2a1e; border-bottom-left-radius:4px; align-self:flex-start; }
+.itzi-user{ background:#6b4210; color:#fffaf5; border-bottom-right-radius:4px; align-self:flex-end; }
+.itzi-wa{
+  display:inline-block; margin-top:8px; padding:8px 12px; border-radius:20px;
+  background:#25d366; color:#fff !important; text-decoration:none; font-weight:700;
+}
+.itzi-chips{ display:flex; flex-wrap:wrap; gap:6px; padding:0 14px 10px; }
+.itzi-chip{
+  border:1px solid #c9a06a; background:#fff; color:#6b4210;
+  border-radius:16px; padding:6px 11px; font-size:12.5px; cursor:pointer;
+  font-family:Montserrat,system-ui,sans-serif;
+}
+.itzi-chip:hover{ background:#f3e7d7; }
+.itzi-form{ display:flex; gap:8px; padding:10px 12px; border-top:1px solid #e8d9c8; background:#fff; }
+#itzi-input{
+  flex:1; border:1px solid #d8c3a5; border-radius:20px; padding:9px 13px;
+  font-size:14px; font-family:Montserrat,system-ui,sans-serif; color:#3a2a1e;
+  outline:none; min-width:0;
+}
+#itzi-input:focus{ border-color:#6b4210; }
+.itzi-send{
+  border:0; border-radius:50%; width:40px; height:40px; flex:none;
+  background:#6b4210; color:#fffaf5; cursor:pointer; font-size:17px;
+}
+.itzi-send:hover{ background:#7a4d12; }
+@media (max-width:480px){
+  #itzi-fab{ right:14px; bottom:14px; }
+  #itzi-panel{ right:12px; bottom:84px; }
+}
