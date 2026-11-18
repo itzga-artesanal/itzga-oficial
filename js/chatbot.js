@@ -198,7 +198,22 @@
     panel.setAttribute('aria-label', 'Chat con Itzi, asistente de ITZGA');
     panel.innerHTML =
       '<div class="itzi-head">' +
-        '<div class="itzi-avatar">I</div>' +
+        '<div class="itzi-avatar" role="img" aria-label="Itzi, asistente de ITZGA">' +
+  '<svg viewBox="0 0 40 40" aria-hidden="true">' +
+  '<defs><radialGradient id="itziGlow" cx="50%" cy="55%" r="50%">' +
+  '<stop offset="0%" stop-color="#ffd97a" stop-opacity=".9"/>' +
+  '<stop offset="100%" stop-color="#ffd97a" stop-opacity="0"/></radialGradient>' +
+  '<linearGradient id="itziFlame" x1="0" y1="1" x2="0" y2="0">' +
+  '<stop offset="0%" stop-color="#ff9d00"/><stop offset="100%" stop-color="#ffe27a"/></linearGradient></defs>' +
+  '<circle class="itzi-glow" cx="20" cy="14" r="13" fill="url(#itziGlow)"/>' +
+  '<path class="itzi-flame" d="M20 3 C23 8 25 10 25 13 a5 5 0 1 1 -10 0 C15 10 17 8 20 3 Z" fill="url(#itziFlame)"/>' +
+  '<rect x="19.2" y="17" width="1.6" height="3" rx=".8" fill="#5a3a1a"/>' +
+  '<rect x="9" y="20" width="22" height="15" rx="4" fill="#fff3e0"/>' +
+  '<rect x="9" y="20" width="22" height="4" rx="2" fill="#f6c9c9"/>' +
+  '<circle cx="15" cy="28" r="2.4" fill="#f2a0a0"/><circle cx="24" cy="29" r="2" fill="#f2a0a0"/>' +
+  '<circle cx="20" cy="26" r="1.6" fill="#e87f7f"/>' +
+  '</svg>' +
+'</div>' +
         '<div><div class="itzi-title">Itzi · Asistente ITZGA</div>' +
         '<div class="itzi-sub">En línea · Responde al instante</div></div>' +
         '<button class="itzi-close" type="button" aria-label="Cerrar chat">×</button>' +
