@@ -186,32 +186,18 @@
     fab.id = 'itzi-fab';
     fab.type = 'button';
     fab.setAttribute('aria-label', 'Abrir chat con Itzi, asistente de ITZGA');
-    fab.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.78 1.44 5.25 3.7 6.83L5 22l4.5-2.5c.8.18 1.63.28 2.5.28 5.52 0 10-3.94 10-8.8S17.52 2 12 2zm-2 8.5h-2v2h2v-2zm5 0h-2v2h2v-2z"/></svg>';
-    badge = el('span', 'itzi-fab-badge', '1');
-    fab.appendChild(badge);
-    document.body.appendChild(fab);
-
-    /* Panel */
-    panel = el('div', null);
-    panel.id = 'itzi-panel';
-    panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-label', 'Chat con Itzi, asistente de ITZGA');
-    panel.innerHTML =
-      '<div class="itzi-head">' +
-        '<div class="itzi-avatar" role="img" aria-label="Itzi, asistente de ITZGA">' +
-  '<svg viewBox="0 0 40 40" aria-hidden="true">' +
-  '<defs><radialGradient id="itziGlow" cx="50%" cy="55%" r="50%">' +
-  '<stop offset="0%" stop-color="#ffd97a" stop-opacity=".9"/>' +
-  '<stop offset="100%" stop-color="#ffd97a" stop-opacity="0"/></radialGradient>' +
-  '<linearGradient id="itziFlame" x1="0" y1="1" x2="0" y2="0">' +
-  '<stop offset="0%" stop-color="#ff9d00"/><stop offset="100%" stop-color="#ffe27a"/></linearGradient></defs>' +
-  '<circle class="itzi-glow" cx="20" cy="14" r="13" fill="url(#itziGlow)"/>' +
-  '<path class="itzi-flame" d="M20 3 C23 8 25 10 25 13 a5 5 0 1 1 -10 0 C15 10 17 8 20 3 Z" fill="url(#itziFlame)"/>' +
-  '<rect x="19.2" y="17" width="1.6" height="3" rx=".8" fill="#5a3a1a"/>' +
-  '<rect x="9" y="20" width="22" height="15" rx="4" fill="#fff3e0"/>' +
-  '<rect x="9" y="20" width="22" height="4" rx="2" fill="#f6c9c9"/>' +
-  '<circle cx="15" cy="28" r="2.4" fill="#f2a0a0"/><circle cx="24" cy="29" r="2" fill="#f2a0a0"/>' +
-  '<circle cx="20" cy="26" r="1.6" fill="#e87f7f"/>' +
+    fab.innerHTML = '<svg viewBox="0 0 40 40" aria-hidden="true">' +
+  '<path class="itzi-flame" d="M20 1 C24.5 6.5 27 9 27 13 a7 7 0 1 1 -14 0 C13 9 15.5 6.5 20 1 Z" fill="#ffa726" stroke="#3a2a3a" stroke-width="1.4" stroke-linejoin="round"/>' +
+  '<path class="itzi-flame" d="M20 8 C22.5 11 23.5 12 23.5 14.5 a3.5 3.5 0 1 1 -7 0 C16.5 12 17.5 11 20 8 Z" fill="#ffdf5e"/>' +
+  '<rect x="19.3" y="18" width="1.4" height="2.6" rx=".7" fill="#3a2a3a"/>' +
+  '<rect x="8" y="20" width="24" height="17" rx="5" fill="#fff3d6" stroke="#3a2a3a" stroke-width="1.6"/>' +
+  '<path d="M8 22 Q20 26 32 22" fill="none" stroke="#3a2a3a" stroke-width="1.2" stroke-linecap="round"/>' +
+  '<circle cx="15" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="15.8" cy="27.7" r=".8" fill="#fff"/>' +
+  '<circle cx="25" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="25.8" cy="27.7" r=".8" fill="#fff"/>' +
+  '<circle cx="12.3" cy="31" r="1.4" fill="#f2a0a0"/><circle cx="27.7" cy="31" r="1.4" fill="#f2a0a0"/>' +
+  '<path d="M17.5 31.5 Q20 34 22.5 31.5" fill="none" stroke="#3a2a3a" stroke-width="1.3" stroke-linecap="round"/>' +
+  '<circle cx="10.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
+  '<circle cx="29.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
   '</svg>' +
 '</div>' +
         '<div><div class="itzi-title">Itzi · Asistente ITZGA</div>' +
