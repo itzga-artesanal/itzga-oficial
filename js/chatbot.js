@@ -80,37 +80,46 @@
     };
   }
 
+  /* Contiene alguna de estas raíces (sin acentos). Así "envíos", "precios"
+     o "pedir" también activan su respuesta, igual que los botones rápidos. */
+  function has(t, words) {
+    for (var i = 0; i < words.length; i++) {
+      if (t.indexOf(words[i]) !== -1) return true;
+    }
+    return false;
+  }
+
   function answer(raw) {
     var t = norm(raw);
 
-    if (/\b(hola|buenas|buenos dias|buenas tardes|buenas noches|que tal|qué tal)\b/.test(t)) {
+    if (has(t, ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'que tal'])) {
       return { text: '¡Hola! Soy Itzi, la asistente de ITZGA. Puedo ayudarte con precios, pedidos, envíos y nuestras velas comestibles. ¿Qué te gustaría saber?' };
     }
-    if (/\b(gracias)\b/.test(t)) {
+    if (has(t, ['gracias'])) {
       return { text: '¡Con gusto! Si necesitas algo más, aquí estoy. Que tengas un bonito día.' };
     }
-    if (/\b(adios|hasta luego|chao|bye|nos vemos)\b/.test(t)) {
+    if (has(t, ['adios', 'hasta luego', 'chao', 'nos vemos'])) {
       return { text: '¡Gracias por visitar ITZGA! Cuando quieras, aquí estoy. Hecho a mano, con amor.' };
     }
-    if (/\b(comestible)/.test(t)) {
+    if (has(t, ['comestible'])) {
       return { text: '¡Sí! Nuestras velas comestibles están hechas con ingredientes de cocina, como mantequilla o chocolate, y son para probarlas.\nPregúntanos por los ingredientes y alérgenos antes de pedir, guárdalas en un lugar fresco y no te comas la mecha.\n¿Quieres ver los sabores? Escríbenos por WhatsApp.', wa: 'Hola ITZGA, quiero información sobre las velas comestibles.' };
     }
-    if (/\b(envio|entrega|mandan|reparto|toda la republica|llegan a)\b/.test(t)) {
+    if (has(t, ['envio', 'entrega', 'mandan', 'reparto', 'toda la republica', 'llegan a'])) {
       return { text: 'Hacemos envíos a toda la República Mexicana.\nEl costo y el tiempo de entrega dependen de tu ubicación y del tamaño de tu pedido, así que te cotizamos por WhatsApp en un momento.\n¿Me dices tu código postal o tu ciudad?', wa: 'Hola ITZGA, quiero cotizar un envío. Mi código postal es: ' };
     }
-    if (/\b(como pido|como compro|como pedi|quiero pedir|quiero comprar|hacer un pedido|pedido|comprar|ordenar)\b/.test(t)) {
+    if (has(t, ['como pido', 'como pedir', 'como compro', 'quiero pedir', 'quiero comprar', 'hacer un pedido', 'pedido', 'comprar', 'ordenar'])) {
       return { text: 'Pedir es muy fácil:\n1. Elige tu jabón o vela favorito.\n2. Escríbenos por WhatsApp con tu pedido.\n3. Te confirmamos disponibilidad y tu envío.\n\nPuedes pedirme el precio de cualquier producto aquí mismo.', wa: 'Hola ITZGA, quiero hacer un pedido.' };
     }
-    if (/\b(horario|hora|abren|cierran|atienden|cuando abren)\b/.test(t)) {
+    if (has(t, ['horario', 'abren', 'cierran', 'atienden', 'cuando abren'])) {
       return { text: 'Nuestro horario de atención es de lunes a sábado de 9:00 a 18:00 horas. El domingo descansamos.\nPor WhatsApp te contestamos en ese horario.' };
     }
-    if (/\b(contacto|telefono|correo|email|instagram|facebook|tiktok|redes)\b/.test(t)) {
+    if (has(t, ['contacto', 'telefono', 'correo', 'email', 'instagram', 'facebook', 'tiktok', 'redes'])) {
       return { text: 'Claro, aquí nos encuentras:\n• WhatsApp: 55 6733 7838\n• Correo: itzgaoficial@gmail.com\n• Instagram, Facebook y TikTok: @itzgaoficial' };
     }
-    if (/\b(aromatica|aroma|olor|fragancia)\b/.test(t)) {
+    if (has(t, ['aromatica', 'aroma', 'fragancia'])) {
       return { text: 'Nuestras velas aromáticas cuestan $85 MXN cada una. Tenemos 12 aromas: vainilla, lavanda, canela, café, brisa marina, fresa, eucalipto menta, sándalo, limón, rosas, coco y pino del bosque.\n¿Cuál es tu favorita?', wa: 'Hola ITZGA, quiero una vela aromática.' };
     }
-    if (/\b(precio|cuesta|cuestan|cuanto|cuánto|vale|valen|lista de precios)\b/.test(t)) {
+    if (has(t, ['precio', 'cuesta', 'cuestan', 'cuanto', 'vale', 'valen', 'lista de precios'])) {
       for (var i = 0; i < PRODUCTS.length; i++) {
         var p = PRODUCTS[i];
         for (var k = 0; k < p.keys.length; k++) {
