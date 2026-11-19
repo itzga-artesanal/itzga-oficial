@@ -2,7 +2,7 @@
    Responde con los precios reales de js/config.js (window.ITZGA),
    explica cómo pedir por WhatsApp, envíos y velas comestibles.
    No inventa costos de envío ni tiempos: esos se cotizan por WhatsApp.
-   Avatar: velita tipo caricatura en SVG con flama animada. */
+   Avatar: rosa artesanal de ITZGA en SVG, la misma de la pagina "Trabajando". */
 (function () {
   'use strict';
 
@@ -181,21 +181,37 @@
     botReply(v);
   }
 
-  /* Velita tipo caricatura: contornos gruesos, colores planos,
-     carita sonriente, rosas rosas y flama grande animada. */
+  /* Rosa artesanal de ITZGA: la misma rosa de la pagina "Trabajando",
+     adaptada al circulo del avatar (40x40). Petalos en dos capas,
+     centro en espiral y un brillo suave. Sin flama. */
   var AVATAR_SVG =
-    '<svg viewBox="0 0 40 40" aria-hidden="true">' +
-    '<path class="itzi-flame" d="M20 1 C24.5 6.5 27 9 27 13 a7 7 0 1 1 -14 0 C13 9 15.5 6.5 20 1 Z" fill="#ffa726" stroke="#3a2a3a" stroke-width="1.4" stroke-linejoin="round"/>' +
-    '<path class="itzi-flame" d="M20 8 C22.5 11 23.5 12 23.5 14.5 a3.5 3.5 0 1 1 -7 0 C16.5 12 17.5 11 20 8 Z" fill="#ffdf5e"/>' +
-    '<rect x="19.3" y="18" width="1.4" height="2.6" rx=".7" fill="#3a2a3a"/>' +
-    '<rect x="8" y="20" width="24" height="17" rx="5" fill="#fff3d6" stroke="#3a2a3a" stroke-width="1.6"/>' +
-    '<path d="M8 22 Q20 26 32 22" fill="none" stroke="#3a2a3a" stroke-width="1.2" stroke-linecap="round"/>' +
-    '<circle cx="15" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="15.8" cy="27.7" r=".8" fill="#fff"/>' +
-    '<circle cx="25" cy="28.5" r="2.3" fill="#3a2a3a"/><circle cx="25.8" cy="27.7" r=".8" fill="#fff"/>' +
-    '<circle cx="12.3" cy="31" r="1.4" fill="#f2a0a0"/><circle cx="27.7" cy="31" r="1.4" fill="#f2a0a0"/>' +
-    '<path d="M17.5 31.5 Q20 34 22.5 31.5" fill="none" stroke="#3a2a3a" stroke-width="1.3" stroke-linecap="round"/>' +
-    '<circle cx="10.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
-    '<circle cx="29.5" cy="22.5" r="1.7" fill="#f27fa0" stroke="#3a2a3a" stroke-width=".7"/>' +
+    '<svg class="itzi-rose" viewBox="0 0 200 200" aria-hidden="true">' +
+    '<defs>' +
+    '<radialGradient id="itziRosaG" cx="38%" cy="32%" r="80%">' +
+    '<stop offset="0%" stop-color="#ffc2dc"/><stop offset="45%" stop-color="#f78fb8"/><stop offset="100%" stop-color="#e7549c"/>' +
+    '</radialGradient>' +
+    '<radialGradient id="itziRosaIn" cx="42%" cy="38%" r="75%">' +
+    '<stop offset="0%" stop-color="#ffd9ea"/><stop offset="55%" stop-color="#f98fbe"/><stop offset="100%" stop-color="#e7549c"/>' +
+    '</radialGradient>' +
+    '</defs>' +
+    '<g fill="url(#itziRosaG)" stroke="#d94f92" stroke-width="2.5" stroke-linejoin="round">' +
+    '<path d="M100 102 C74 82 68 44 100 14 C132 44 126 82 100 102 Z"/>' +
+    '<path d="M100 102 C74 82 68 44 100 14 C132 44 126 82 100 102 Z" transform="rotate(60 100 100)"/>' +
+    '<path d="M100 102 C74 82 68 44 100 14 C132 44 126 82 100 102 Z" transform="rotate(120 100 100)"/>' +
+    '<path d="M100 102 C74 82 68 44 100 14 C132 44 126 82 100 102 Z" transform="rotate(180 100 100)"/>' +
+    '<path d="M100 102 C74 82 68 44 100 14 C132 44 126 82 100 102 Z" transform="rotate(240 100 100)"/>' +
+    '<path d="M100 102 C74 82 68 44 100 14 C132 44 126 82 100 102 Z" transform="rotate(300 100 100)"/>' +
+    '</g>' +
+    '<g fill="url(#itziRosaIn)" stroke="#d94f92" stroke-width="2.5" stroke-linejoin="round">' +
+    '<path d="M100 101 C82 87 78 58 100 36 C122 58 118 87 100 101 Z"/>' +
+    '<path d="M100 101 C82 87 78 58 100 36 C122 58 118 87 100 101 Z" transform="rotate(72 100 100)"/>' +
+    '<path d="M100 101 C82 87 78 58 100 36 C122 58 118 87 100 101 Z" transform="rotate(144 100 100)"/>' +
+    '<path d="M100 101 C82 87 78 58 100 36 C122 58 118 87 100 101 Z" transform="rotate(216 100 100)"/>' +
+    '<path d="M100 101 C82 87 78 58 100 36 C122 58 118 87 100 101 Z" transform="rotate(288 100 100)"/>' +
+    '</g>' +
+    '<circle cx="100" cy="100" r="17" fill="url(#itziRosaIn)" stroke="#d94f92" stroke-width="2.5"/>' +
+    '<path d="M100 90 a10 10 0 1 1 -10 10 a6.5 6.5 0 1 0 6.5 -6.5 a3.5 3.5 0 1 1 -3.5 3.5" fill="none" stroke="#c93d84" stroke-width="3" stroke-linecap="round"/>' +
+    '<ellipse cx="70" cy="52" rx="24" ry="10" fill="#fff" opacity=".3" transform="rotate(-30 70 52)"/>' +
     '</svg>';
 
   function build() {
