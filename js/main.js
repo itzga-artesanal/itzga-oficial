@@ -1,3 +1,5 @@
+/* Anti-clickjacking: si la pagina esta dentro de un iframe, sal de el. */
+if (window.top !== window.self) { window.top.location = window.self.location; }
 (function(){
 var d=document,W=window,CFG=W.ITZGA||{},EM="itzgaoficial@gmail.com",WA="525567337838";
 var L=(d.documentElement.lang||"es").slice(0,2)=="en"?"en":"es";
