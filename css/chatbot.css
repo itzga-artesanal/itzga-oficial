@@ -32,10 +32,18 @@
 }
 .itzi-head .itzi-avatar{
   width:40px; height:40px; border-radius:50%; flex:none; overflow:hidden;
-  background:#e9b949; border:2px solid #e9b949;
+  background:#fbe9f2; border:2px solid #d94f92;
 }
 .itzi-head .itzi-avatar svg{
   width:100%; height:100%; display:block;
+}
+.itzi-head .itzi-rose{
+  transform-origin:50% 50%;
+  animation:itzi-rose-sway 3.6s ease-in-out infinite;
+}
+@keyframes itzi-rose-sway{
+  0%,100%{ transform:rotate(-2deg); }
+  50%{ transform:rotate(2deg); }
 }
 .itzi-head .itzi-flame{
   transform-origin:50% 100%;
@@ -53,7 +61,7 @@
   to{ opacity:.65; }
 }
 @media (prefers-reduced-motion: reduce){
-  .itzi-head .itzi-flame, .itzi-head .itzi-glow{ animation:none; }
+  .itzi-head .itzi-flame, .itzi-head .itzi-glow, .itzi-head .itzi-rose{ animation:none; }
 }
 .itzi-head .itzi-title{ font-weight:700; font-size:15px; line-height:1.2; }
 .itzi-head .itzi-sub{ font-size:12px; opacity:.85; }
