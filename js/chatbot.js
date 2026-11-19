@@ -280,6 +280,32 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') toggle(false);
     });
+
+    /* Burbujas de la rosa, como en la pagina "Trabajando": suben desde
+       abajo del avatar y se desvanecen; al tocar la rosa salen varias. */
+    var avatar = panel.querySelector('.itzi-avatar');
+    function soltarBurbujasItzi(n) {
+      if (!avatar || document.hidden) return;
+      for (var k = 0; k < n; k++) {
+        (function (j) {
+          setTimeout(function () {
+            var b = document.createElement('span');
+            var t = 4 + Math.random() * 5;
+            b.className = 'itzi-burbuja';
+            b.style.width = t + 'px'; b.style.height = t + 'px';
+            b.style.left = (4 + Math.random() * 28) + 'px';
+            b.style.setProperty('--deriva', ((Math.random() * 10) - 5) + 'px');
+            b.style.animationDuration = (1.8 + Math.random() * 1.2) + 's';
+            avatar.appendChild(b);
+            setTimeout(function () { b.remove(); }, 3200);
+          }, j * 160);
+        })(k);
+      }
+    }
+    if (avatar) {
+      avatar.addEventListener('click', function () { soltarBurbujasItzi(4); });
+      setInterval(function () { if (Math.random() < 0.7) soltarBurbujasItzi(1); }, 2600);
+    }
   }
 
   if (document.readyState === 'loading') {
