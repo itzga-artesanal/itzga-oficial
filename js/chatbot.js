@@ -165,7 +165,12 @@
       m.appendChild(a);
     }
     msgs.appendChild(m);
-    msgs.scrollTop = msgs.scrollHeight;
+    /* Esperar a que el navegador calcule el alto final del mensaje
+       (botón de WhatsApp, salto de línea) antes de desplazar, para
+       no dejar la primera línea cortada a la mitad. */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { msgs.scrollTop = msgs.scrollHeight; });
+    });
   }
 
   function botReply(userText) {
