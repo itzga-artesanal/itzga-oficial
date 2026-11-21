@@ -13,6 +13,7 @@ window.ITZGA={
     "jabon-artesanal-ositos-recuerdo":"nuevo",
     "jabon-artesanal-racimo-uvas":"nuevo",
     "jabon-artesanal-rosa":"nuevo",
+    "jabon-clasico-aloe-bebe":"nuevo",
     "jabon-clasico-arroz":"nuevo",
     "jabon-clasico-coco-almendra":"nuevo"
   },
@@ -60,6 +61,7 @@ window.ITZGA={
       "jabon-calendula-manzanilla":null,
       "jabon-carbon-romero":90,
       "jabon-citricos":null,
+      "jabon-clasico-aloe-bebe":65,
       "jabon-clasico-arcilla-rosa":null,
       "jabon-clasico-arroz":90,
       "jabon-clasico-avena-miel":null,
