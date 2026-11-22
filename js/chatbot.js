@@ -1,6 +1,6 @@
 /* ITZGA · Chatbot "Itzi" — asistente sencillo sin servidor.
    Responde con los precios reales de js/config.js (window.ITZGA),
-   explica cómo pedir por WhatsApp, envíos y velas comestibles.
+   explica cómo pedir por WhatsApp, envíos.
    No inventa costos de envío ni tiempos: esos se cotizan por WhatsApp.
    Avatar: rosa artesanal de ITZGA en SVG, la misma de la pagina "Trabajando". */
 (function () {
@@ -94,16 +94,13 @@
     var t = norm(raw);
 
     if (has(t, ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'que tal'])) {
-      return { text: '¡Hola! Soy Itzi, la asistente de ITZGA. Puedo ayudarte con precios, pedidos, envíos y nuestras velas comestibles. ¿Qué te gustaría saber?' };
+      return { text: '¡Hola! Soy Itzi, la asistente de ITZGA. Puedo ayudarte con precios, pedidos y envíos. ¿Qué te gustaría saber?' };
     }
     if (has(t, ['gracias'])) {
       return { text: '¡Con gusto! Si necesitas algo más, aquí estoy. Que tengas un bonito día.' };
     }
     if (has(t, ['adios', 'hasta luego', 'chao', 'nos vemos'])) {
       return { text: '¡Gracias por visitar ITZGA! Cuando quieras, aquí estoy. Hecho a mano, con amor.' };
-    }
-    if (has(t, ['comestible'])) {
-      return { text: '¡Sí! Nuestras velas comestibles están hechas con ingredientes de cocina, como mantequilla o chocolate, y son para probarlas.\nPregúntanos por los ingredientes y alérgenos antes de pedir, guárdalas en un lugar fresco y no te comas la mecha.\n¿Quieres ver los sabores? Escríbenos por WhatsApp.', wa: 'Hola ITZGA, quiero información sobre las velas comestibles.' };
     }
     if (has(t, ['envio', 'entrega', 'mandan', 'reparto', 'toda la republica', 'llegan a'])) {
       return { text: 'Hacemos envíos a toda la República Mexicana.\nEl costo y el tiempo de entrega dependen de tu ubicación y del tamaño de tu pedido, así que te cotizamos por WhatsApp en un momento.\n¿Me dices tu código postal o tu ciudad?', wa: 'Hola ITZGA, quiero cotizar un envío. Mi código postal es: ' };
@@ -115,7 +112,7 @@
       return { text: 'Nuestro horario de atención es de lunes a sábado de 9:00 a 18:00 horas. El domingo descansamos.\nPor WhatsApp te contestamos en ese horario.' };
     }
     if (has(t, ['contacto', 'telefono', 'correo', 'email', 'instagram', 'facebook', 'tiktok', 'redes'])) {
-      return { text: 'Claro, aquí nos encuentras:\n• WhatsApp: 55 6733 7838\n• Correo: itzgaoficial@gmail.com\n• Instagram, Facebook y TikTok: @itzgaoficial' };
+      return { text: 'Claro, aquí nos encuentras:\n• WhatsApp: 55 6733 7838\n• Correo: itzgaoficial@gmail.com\n• Instagram: @itzga_oficial · Facebook: Itzga-oficial · TikTok: @itz.gaoficial' };
     }
     if (has(t, ['aromatica', 'aroma', 'fragancia'])) {
       return { text: 'Nuestras velas aromáticas cuestan $85 MXN cada una. Tenemos 12 aromas: vainilla, lavanda, canela, café, brisa marina, fresa, eucalipto menta, sándalo, limón, rosas, coco y pino del bosque.\n¿Cuál es tu favorita?', wa: 'Hola ITZGA, quiero una vela aromática.' };
@@ -137,9 +134,9 @@
       }
     }
     if (has(t, ['jabon', 'vela'])) {
-      return { text: 'Tenemos jabones artesanales, clásicos y botánicos, y velas artesanales, aromáticas y comestibles, todos hechos a mano en CDMX.\n¿Buscas un precio, hacer un pedido o saber de los envíos? También puedes preguntarme por un producto, por ejemplo: "¿cuánto cuesta el Racimo de Uvas?"' };
+      return { text: 'Tenemos jabones artesanales, clásicos y botánicos, y velas artesanales y aromáticas, todos hechos a mano en CDMX.\n¿Buscas un precio, hacer un pedido o saber de los envíos? También puedes preguntarme por un producto, por ejemplo: "¿cuánto cuesta el Racimo de Uvas?"' };
     }
-    return { text: 'No estoy segura de eso, pero te ayudo con mucho gusto por WhatsApp: ahí te atiende directamente el taller.\nTambién puedes preguntarme por precios, pedidos, envíos o velas comestibles.', wa: 'Hola ITZGA, tengo una duda.' };
+    return { text: 'No estoy segura de eso, pero te ayudo con mucho gusto por WhatsApp: ahí te atiende directamente el taller.\nTambién puedes preguntarme por precios, pedidos o envíos.', wa: 'Hola ITZGA, tengo una duda.' };
   }
 
   /* ---------- Interfaz ---------- */
@@ -247,7 +244,6 @@
         '<button type="button" class="itzi-chip">Precios</button>' +
         '<button type="button" class="itzi-chip">Cómo pedir</button>' +
         '<button type="button" class="itzi-chip">Envíos</button>' +
-        '<button type="button" class="itzi-chip">Velas comestibles</button>' +
         '<button type="button" class="itzi-chip">Horario</button>' +
       '</div>' +
       '<form class="itzi-form">' +

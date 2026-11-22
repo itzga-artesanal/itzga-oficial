@@ -31,8 +31,7 @@ window.ITZGA={
       "jabon-clasico-":null,
       "jabon-artesanal-":null,
       "vela-artesanal-":null,
-      "vela-aromatica-":85,
-      "vela-comestible-":null
+      "vela-aromatica-":85
     },
     /* 3) PRECIO POR PRODUCTO (tiene prioridad sobre la familia). null = "Consultar precio" */
     products:{
@@ -106,23 +105,7 @@ window.ITZGA={
       "vela-artesanal-nube":null,
       "vela-artesanal-osito":null,
       "vela-artesanal-peonia":null,
-      "vela-artesanal-rosa":null,
-      "vela-comestible-ajo-romero":null,
-      "vela-comestible-albahaca":null,
-      "vela-comestible-avellana":null,
-      "vela-comestible-canela":null,
-      "vela-comestible-caramelo":null,
-      "vela-comestible-chile":null,
-      "vela-comestible-chocolate-blanco":null,
-      "vela-comestible-chocolate-leche":null,
-      "vela-comestible-chocolate-naranja":null,
-      "vela-comestible-fresa-chocolate":null,
-      "vela-comestible-miel":null,
-      "vela-comestible-nutella":null,
-      "vela-comestible-pesto":null,
-      "vela-comestible-romero":null,
-      "vela-comestible-trufa":null,
-      "vela-comestible-vainilla":null
+      "vela-artesanal-rosa":null
     }
   }
 };
