@@ -63,7 +63,7 @@ window.ITZGA={
       "jabon-cafe-cacao":null,
       "jabon-calendula-manzanilla":null,
       "jabon-carbon-romero":90,
-      "jabon-citricos":null,
+      "jabon-citricos":90,
       "jabon-clasico-aloe-bebe":65,
       "jabon-clasico-arcilla-rosa":null,
       "jabon-clasico-arroz":90,
