@@ -6,6 +6,8 @@ window.ITZGA={
   badges:{
     "vela-artesanal-kit-navideno":["navidad","nuevo"],
     "vela-artesanal-arbol-navidad":["navidad"],
+    "vela-artesanal-osito-5-piezas":["navidad","nuevo"],
+    "vela-artesanal-suena":["navidad","nuevo"],
     "jabon-artesanal-pino-navideno":["navidad","nuevo"],
     "jabon-artesanal-mini-jabones-navidenos":["navidad","nuevo"],
     "jabon-artesanal-mini-pino":["navidad","nuevo"],
@@ -103,9 +105,11 @@ window.ITZGA={
       "vela-artesanal-luna-estrella":null,
       "vela-artesanal-mono":null,
       "vela-artesanal-nube":null,
-      "vela-artesanal-osito":null,
+      "vela-artesanal-osito":35,
+      "vela-artesanal-osito-5-piezas":45,
       "vela-artesanal-peonia":null,
-      "vela-artesanal-rosa":null
+      "vela-artesanal-rosa":null,
+      "vela-artesanal-suena":40
     }
   }
 };
