@@ -516,7 +516,10 @@
           carbon:  { t: "Carbón activado",  d: "Limpieza profunda",        p: 15 },
           cafe:    { t: "Café molido",      d: "Exfolia y activa",         p: 10 },
           arroz:   { t: "Arroz",            d: "Suaviza y unifica el tono",p: 10 },
-          calendula:{ t: "Caléndula",       d: "Flores que cuidan la piel",p: 10 }
+          calendula:{ t: "Caléndula",       d: "Flores que cuidan la piel",p: 10 },
+          vitaminae:{ t: "Vitamina E",      d: "Nutre y protege la piel",  p: 10 },
+          jojoba:   { t: "Aceite de jojoba",d: "Hidrata sin engrasar",     p: 10 },
+          eucaliptoAceite:{ t: "Aceite de eucalipto", d: "Fresco y revitalizante", p: 10 }
         },
         extras: {
           petalos:    { t: "Pétalos encima",      d: "Flores secas decorativas",   p: 10 },
@@ -649,6 +652,9 @@
         if (ing === "cafe") return "Jabón " + linea.toLowerCase() + " de café";
         if (ing === "arroz") return "Jabón " + linea.toLowerCase() + " de arroz";
         if (ing === "calendula") return "Jabón " + linea.toLowerCase() + " de caléndula";
+        if (ing === "vitaminae") return "Jabón " + linea.toLowerCase() + " con vitamina E";
+        if (ing === "jojoba") return "Jabón " + linea.toLowerCase() + " con aceite de jojoba";
+        if (ing === "eucaliptoAceite") return "Jabón " + linea.toLowerCase() + " con aceite de eucalipto";
         if (state.aroma !== "ninguno") return "Jabón " + linea.toLowerCase() + " con aroma a " + DATA.aroma[state.aroma].t.toLowerCase();
         return "Jabón " + linea.toLowerCase() + " personalizado";
       }

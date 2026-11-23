@@ -545,7 +545,10 @@
           carbon:    { t: "Activated charcoal",d: "Deep cleansing",            p: 15 },
           cafe:      { t: "Ground coffee",     d: "Exfoliates and energizes",  p: 10 },
           arroz:     { t: "Rice",              d: "Softens and evens the tone",p: 10 },
-          calendula: { t: "Calendula",         d: "Skin-loving flowers",       p: 10 }
+          calendula: { t: "Calendula",         d: "Skin-loving flowers",       p: 10 },
+          vitaminae: { t: "Vitamin E",         d: "Nourishes and protects the skin", p: 10 },
+          jojoba:    { t: "Jojoba oil",        d: "Hydrates without greasing", p: 10 },
+          eucaliptoAceite: { t: "Eucalyptus oil", d: "Fresh and revitalizing", p: 10 }
         },
         extras: {
           petalos:    { t: "Petals on top",     d: "Decorative dried flowers",  p: 10 },
@@ -678,6 +681,9 @@
         if (ing === "cafe") return linea + " coffee soap";
         if (ing === "arroz") return linea + " rice soap";
         if (ing === "calendula") return linea + " calendula soap";
+        if (ing === "vitaminae") return linea + " vitamin E soap";
+        if (ing === "jojoba") return linea + " jojoba oil soap";
+        if (ing === "eucaliptoAceite") return linea + " eucalyptus oil soap";
         if (state.aroma !== "ninguno") return linea + " soap with " + DATA.aroma[state.aroma].t.toLowerCase() + " scent";
         return "Custom " + linea.toLowerCase() + " soap";
       }

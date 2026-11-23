@@ -194,6 +194,14 @@ body{padding-bottom:78px}.toast{top:84px}
 .xmas-band .xmas-grid{position:relative;z-index:1;max-width:1150px;margin:28px auto}
 .xmas-band .card{color:var(--ink)}.xmas-band .btn.o{border-color:#ecd3a0;color:#fff;background:transparent}.xmas-band .btn.o:hover{background:#ecd3a0;color:#1b2e23}
 .xmas-note{max-width:640px;text-align:center}.xmas-note p{color:var(--mut)}
+/* Banda destacada "Crea tu propio jabón" — la estrella de la corona */
+.custom-band{position:relative;overflow:hidden;max-width:none;margin:0;padding:64px 5%;background:linear-gradient(135deg,var(--rose),var(--bg) 65%);color:var(--ink);text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.custom-band::before,.custom-band::after{content:"✦";position:absolute;color:var(--gold);opacity:.12;line-height:1;pointer-events:none}
+.custom-band::before{top:-28px;right:4%;font-size:160px}
+.custom-band::after{bottom:-52px;left:3%;font-size:200px}
+.custom-band .script{color:var(--gold)}
+.custom-band h2{margin:6px 0 12px}
+.custom-band .sub{color:var(--mut);max-width:660px;margin:0 auto 24px;line-height:1.8}
 
 /* ============================================================
    ITZGA — Mejora de diseño y contraste
