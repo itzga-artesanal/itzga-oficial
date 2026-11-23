@@ -157,6 +157,11 @@
       .opt .check { display: none; font-weight: 700; color: var(--green); font-size: .8rem; }
       .opt[aria-pressed="true"] .check { display: block; }
 
+      /* Sección destacada: nuevos ingredientes estrella */
+      .new-ing { margin: 0 0 18px 42px; padding: 16px 16px 18px; border: 1.5px solid var(--gold); border-radius: 16px; background: color-mix(in srgb, var(--gold) 8%, var(--surface)); }
+      .new-ing .sub-label { margin: 0 0 10px; color: var(--gold); }
+      .new-ing .opts { margin-left: 0; }
+
       .swatches { display: flex; flex-wrap: wrap; gap: 12px; margin-left: 42px; }
       .swatch {
         width: 64px; padding: 6px 0 4px; background: none; border: none; color: var(--ink);
@@ -226,7 +231,7 @@
         .preview-card { position: static; order: 2; }
         .steps-col { order: 1; }
         .ideas, .how { grid-template-columns: 1fr; }
-        .step .hint, .opts, .swatches, .qty-row, .sub-label, .layers { margin-left: 0; }
+        .step .hint, .opts, .swatches, .qty-row, .sub-label, .layers, .new-ing { margin-left: 0; }
         .layers { grid-template-columns: 1fr; }
         .step-head { margin-bottom: 4px; }
       }
@@ -347,6 +352,10 @@
           <section class="step" aria-labelledby="h-ing">
             <div class="step-head"><span class="step-num">5</span><h2 id="h-ing">Ingrediente estrella</h2></div>
             <p class="hint">El toque especial que cuida tu piel.</p>
+            <div class="new-ing">
+              <span class="sub-label">✦ Nuevos ingredientes estrella</span>
+              <div class="opts wide" role="group" aria-label="Nuevos ingredientes estrella" id="g-ingrediente-nuevo"></div>
+            </div>
             <div class="opts" role="group" aria-label="Ingrediente estrella" id="g-ingrediente"></div>
           </section>
 
@@ -596,6 +605,7 @@
         buildGroup("g-base", "base", DATA.base, baseKeys);
         buildSwatches("g-color", state.color, "color");
         buildGroup("g-aroma", "aroma", DATA.aroma, Object.keys(DATA.aroma));
+        buildGroup("g-ingrediente-nuevo", "ingrediente", DATA.ingrediente, ["vitaminae", "jojoba", "eucaliptoAceite"]);
         buildGroup("g-ingrediente", "ingrediente", DATA.ingrediente, Object.keys(DATA.ingrediente));
         buildGroup("g-extras", "extras", DATA.extras, Object.keys(DATA.extras));
         buildGroup("g-tamano", "tamano", DATA.tamano, Object.keys(DATA.tamano));
